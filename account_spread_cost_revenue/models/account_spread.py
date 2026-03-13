@@ -66,10 +66,8 @@ class AccountSpread(models.Model):
         store=True,
         required=True,
     )
-    is_credit_account_deprecated = fields.Boolean(
-        compute="_compute_deprecated_accounts"
-    )
-    is_debit_account_deprecated = fields.Boolean(compute="_compute_deprecated_accounts")
+    is_credit_account_archived = fields.Boolean(compute="_compute_archived_accounts")
+    is_debit_account_archived = fields.Boolean(compute="_compute_archived_accounts")
     unspread_amount = fields.Float(
         digits="Account",
         compute="_compute_amounts",
@@ -595,11 +593,11 @@ class AccountSpread(models.Model):
         if self.company_id.force_move_auto_post or self.move_line_auto_post:
             moves.with_context(**ctx).action_post()
 
-    @api.depends("debit_account_id.deprecated", "credit_account_id.deprecated")
-    def _compute_deprecated_accounts(self):
+    @api.depends("debit_account_id.active", "credit_account_id.active")
+    def _compute_archived_accounts(self):
         for spread in self:
-            spread.is_debit_account_deprecated = spread.debit_account_id.deprecated
-            spread.is_credit_account_deprecated = spread.credit_account_id.deprecated
+            spread.is_debit_account_archived = not spread.debit_account_id.active
+            spread.is_credit_account_archived = not spread.credit_account_id.active
 
     def open_posted_view(self):
         action_name = "account_spread_cost_revenue.action_account_moves_all_spread"

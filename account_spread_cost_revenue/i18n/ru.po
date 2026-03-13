@@ -20,26 +20,26 @@ msgstr ""
 #. module: account_spread_cost_revenue
 #: model_terms:ir.ui.view,arch_db:account_spread_cost_revenue.view_account_spread
 msgid ""
-"<span class=\"help-block text-danger\" colspan=\"2\" invisible=\"not is_credit_account_deprecated\">\n"
-"                                  This account in deprecated! The reconciliation will be NOT possible.\n"
+"<span class=\"help-block text-danger\" colspan=\"2\" invisible=\"not is_credit_account_archived\">\n"
+"                                  This account is archived! The reconciliation will be NOT possible.\n"
 "                            </span>"
 msgstr ""
 "<span class=\"help-block text-danger\" colspan=\"2\" invisible=\"not "
-"is_credit_account_deprecated\">\n"
-"                                  Этот счет является устаревшим! Сверка "
+"is_credit_account_archived\">\n"
+"                                  Этот аккаунт заархивирован! Сверка "
 "будет невозможна.\n"
 "                            </span>"
 
 #. module: account_spread_cost_revenue
 #: model_terms:ir.ui.view,arch_db:account_spread_cost_revenue.view_account_spread
 msgid ""
-"<span class=\"help-block text-danger\" colspan=\"2\" invisible=\"not is_debit_account_deprecated\">\n"
-"                                  This account in deprecated! The reconciliation will be NOT possible.\n"
+"<span class=\"help-block text-danger\" colspan=\"2\" invisible=\"not is_debit_account_archived\">\n"
+"                                  This account is archived! The reconciliation will be NOT possible.\n"
 "                            </span>"
 msgstr ""
 "<span class=\"help-block text-danger\" colspan=\"2\" invisible=\"not "
-"is_debit_account_deprecated\">\n"
-"                                  Этот счет является устаревшим! Сверка "
+"is_debit_account_archived\">\n"
+"                                  Этот аккаунт заархивирован! Сверка "
 "будет невозможна.\n"
 "                            </span>"
 
@@ -597,14 +597,14 @@ msgid "Invoice line"
 msgstr "Строка счета-фактуры"
 
 #. module: account_spread_cost_revenue
-#: model:ir.model.fields,field_description:account_spread_cost_revenue.field_account_spread__is_credit_account_deprecated
-msgid "Is Credit Account Deprecated"
-msgstr "Является ли кредитный счет устаревшим"
+#: model:ir.model.fields,field_description:account_spread_cost_revenue.field_account_spread__is_credit_account_archived
+msgid "Is Credit Account Archived"
+msgstr "Является ли кредитный счет заархивирован"
 
 #. module: account_spread_cost_revenue
-#: model:ir.model.fields,field_description:account_spread_cost_revenue.field_account_spread__is_debit_account_deprecated
-msgid "Is Debit Account Deprecated"
-msgstr "Дебетуется ли дебетовый счет"
+#: model:ir.model.fields,field_description:account_spread_cost_revenue.field_account_spread__is_debit_account_archived
+msgid "Is Debit Account Archived"
+msgstr "Дебетуется ли дебетовый счет заархивирован"
 
 #. module: account_spread_cost_revenue
 #: model:ir.model.fields,field_description:account_spread_cost_revenue.field_account_spread__message_is_follower
