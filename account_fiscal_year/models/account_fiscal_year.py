@@ -1,7 +1,7 @@
 #  Copyright 2020 Simone Rubino - Agile Business Group
 #  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.osv import expression
 
@@ -39,19 +39,20 @@ class AccountFiscalYear(models.Model):
             date_to = fy.date_to
             if date_to < date_from:
                 raise ValidationError(
-                    _("The ending date must not be prior to the starting date.")
+                    self.env._(
+                        "The ending date must not be prior to the starting date."
+                    )
                 )
 
             domain = fy._get_overlapping_domain()
             overlapping_fy = self.search(domain, limit=1)
             if overlapping_fy:
                 raise ValidationError(
-                    _(
-                        "This fiscal year '{fy}' "
-                        "overlaps with '{overlapping_fy}'.\n"
+                    self.env._(
+                        "This fiscal year '%(fy)s' "
+                        "overlaps with '%(overlapping_fy)s'.\n"
                         "Please correct the start and/or end dates "
-                        "of your fiscal years."
-                    ).format(
+                        "of your fiscal years.",
                         fy=fy.display_name,
                         overlapping_fy=overlapping_fy.display_name,
                     )
